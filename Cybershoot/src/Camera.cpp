@@ -1,11 +1,16 @@
 #include "Camera.h"
 #include "WindowSettings.h"
-#include "Lerp.h"
+#include "Util/Lerp.h"
 
 Camera::Camera()
 {
 	view.setCenter(0.0f, 0.0f);
 	view.setSize(WindowSettings::WIDTH, WindowSettings::HEIGHT);
+}
+
+void Camera::Reset()
+{
+	view.setCenter(0.0f, 0.0f);
 }
 
 void Camera::Update(sf::Vector2f newPosition)

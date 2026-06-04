@@ -3,7 +3,8 @@
 enum class EnemyType
 {
 	Grunt,
-	Mortar
+	Mortar,
+	Bull
 };
 
 enum class PickupType

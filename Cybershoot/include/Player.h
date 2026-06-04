@@ -1,10 +1,10 @@
 #pragma once
 #include <memory>
 #include "SFML/Graphics.hpp"
-#include "Vector.h"
-#include "Weapon.h"
+#include "Util/Vector.h"
+#include "Weapon/Weapon.h"
 #include "ManagerLocator.h"
-#include "UIManager.h"
+#include "Manager/UIManager.h"
 #include "GameTypes.h"
 
 class Player : public sf::Drawable
@@ -47,7 +47,6 @@ public:
 
 	void TakeDamage(int damage);
 	void Heal(int amount);
-
 	void SetWeapon(WeaponType type);
 
 	void Update(float deltaTime);

@@ -11,6 +11,8 @@ private:
 public:
 	Camera();
 
+	void Reset();
+
 	void Update(sf::Vector2f newPosition);
 
 	sf::View& GetView() { return view; }

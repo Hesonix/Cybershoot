@@ -1,7 +1,7 @@
-#include "UIManager.h"
+#include "Manager/UIManager.h"
 
 #include "ManagerLocator.h"
-#include "ResourceManager.h"
+#include "Manager/ResourceManager.h"
 
 UIManager::UIManager()
 {

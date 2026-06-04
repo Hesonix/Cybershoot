@@ -2,9 +2,9 @@
 
 #include "SFML/Graphics.hpp"
 
-#include "RenderManager.h"
-#include "ResourceManager.h"
-#include "StateManager.h"
+#include "Manager/RenderManager.h"
+#include "Manager/ResourceManager.h"
+#include "Manager/StateManager.h"
 
 class Game
 {

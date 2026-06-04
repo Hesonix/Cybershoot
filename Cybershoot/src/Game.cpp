@@ -2,7 +2,7 @@
 
 #include <iostream>
 #include "ManagerLocator.h"
-#include "MainMenuState.h"
+#include "State/MainMenuState.h"
 
 Game::Game()
 {
@@ -29,6 +29,7 @@ void Game::LoadResources()
 	resourceManager.LoadTexture("bullet", "res/textures/bullet.png");
 	resourceManager.LoadTexture("grunt", "res/textures/grunt.png");
 	resourceManager.LoadTexture("mortar", "res/textures/mortar.png");
+	resourceManager.LoadTexture("bull", "res/textures/bull.png");
 	resourceManager.LoadTexture("ammo_pickup", "res/textures/ammo_pickup.png");
 	resourceManager.LoadTexture("health_pickup", "res/textures/health_pickup.png");
 }

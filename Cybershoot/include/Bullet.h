@@ -2,7 +2,9 @@
 
 #include "SFML/Graphics.hpp"
 
-#include "Enemy.h"
+#include "Enemy/Enemy.h"
+
+#include <memory>
 
 class Bullet : public sf::Drawable
 {
@@ -21,7 +23,11 @@ public:
 
 	sf::Vector2f GetPosition() { return sprite.getPosition(); } 
 	sf::FloatRect GetGlobalBounds() { return sprite.getGlobalBounds(); }
+
 	bool IsOwnedByPlayer() { return isOwnedByPlayer; }
+
+	bool DidCollideWithEnemy(Enemy& enemy);
+	bool DidCollideWithPlayer();
 
 	bool IsAlive() { return isAlive; }
 

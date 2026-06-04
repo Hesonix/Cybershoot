@@ -1,12 +1,12 @@
 #include "Player.h"
 
 #include "ManagerLocator.h"
-#include "RenderManager.h"
-#include "ResourceManager.h"
-#include "UIManager.h"
-#include "Pistol.h"
-#include "Shotgun.h"
-#include "Rifle.h"
+#include "Manager/RenderManager.h"
+#include "Manager/ResourceManager.h"
+#include "Manager/UIManager.h"
+#include "Weapon/Pistol.h"
+#include "Weapon/Shotgun.h"
+#include "Weapon/Rifle.h"
 
 Player* Player::Instance = nullptr;
 

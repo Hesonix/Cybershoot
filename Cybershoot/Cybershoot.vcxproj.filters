@@ -21,7 +21,7 @@
     <ClCompile Include="src\Game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Vector.cpp">
+    <ClCompile Include="src\Util\Vector.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\RandomGenerator.cpp">
@@ -33,85 +33,94 @@
     <ClCompile Include="src\Player.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Pistol.cpp">
+    <ClCompile Include="src\Weapon\Pistol.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Weapon.cpp">
+    <ClCompile Include="src\Weapon\Weapon.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\BulletManager.cpp">
+    <ClCompile Include="src\Manager\BulletManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Enemy.cpp">
+    <ClCompile Include="src\Enemy\Enemy.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\EnemyManager.cpp">
+    <ClCompile Include="src\Manager\EnemyManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\CollisionManager.cpp">
+    <ClCompile Include="src\Manager\CollisionManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\UIManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\CenteredText.cpp">
+    <ClCompile Include="src\UI\CenteredText.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\GameManager.cpp">
+    <ClCompile Include="src\Manager\GameManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\TileManager.cpp">
+    <ClCompile Include="src\Manager\TileManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\MainMenuState.cpp">
+    <ClCompile Include="src\State\MainMenuState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\GameState.cpp">
+    <ClCompile Include="src\State\GameState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\CenteredButton.cpp">
+    <ClCompile Include="src\UI\CenteredButton.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\ResourceManager.cpp">
+    <ClCompile Include="src\Manager\ResourceManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\StateManager.cpp">
+    <ClCompile Include="src\Manager\StateManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\ManagerLocator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\RenderManager.cpp">
+    <ClCompile Include="src\Manager\RenderManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Camera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\AmmoPickup.cpp">
+    <ClCompile Include="src\Pickup\AmmoPickup.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\PickupManager.cpp">
+    <ClCompile Include="src\Manager\PickupManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Pickup.cpp">
+    <ClCompile Include="src\Pickup\Pickup.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Grunt.cpp">
+    <ClCompile Include="src\Enemy\Grunt.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Mortar.cpp">
+    <ClCompile Include="src\Enemy\Mortar.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\HealthPickup.cpp">
+    <ClCompile Include="src\Pickup\HealthPickup.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\SpawnManager.cpp">
+    <ClCompile Include="src\Manager\SpawnManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Shotgun.cpp">
+    <ClCompile Include="src\Weapon\Shotgun.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Rifle.cpp">
+    <ClCompile Include="src\Weapon\Rifle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Enemy\Bull.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Collision.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\State\PauseState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -122,7 +131,7 @@
     <ClInclude Include="include\Game.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\Vector.h">
+    <ClInclude Include="include\Util\Vector.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\RandomGenerator.h">
@@ -134,52 +143,49 @@
     <ClInclude Include="include\WindowSettings.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\Weapon.h">
+    <ClInclude Include="include\Weapon\Weapon.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\Pistol.h">
+    <ClInclude Include="include\Weapon\Pistol.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\BulletManager.h">
+    <ClInclude Include="include\Manager\BulletManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\Enemy.h">
+    <ClInclude Include="include\Enemy\Enemy.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\EnemyManager.h">
+    <ClInclude Include="include\Manager\EnemyManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\CollisionManager.h">
+    <ClInclude Include="include\Manager\UIManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\UIManager.h">
+    <ClInclude Include="include\UI\CenteredText.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\CenteredText.h">
+    <ClInclude Include="include\Manager\GameManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\GameManager.h">
+    <ClInclude Include="include\Util\Lerp.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\Lerp.h">
+    <ClInclude Include="include\Manager\TileManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\TileManager.h">
+    <ClInclude Include="include\State\MainMenuState.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\MainMenuState.h">
+    <ClInclude Include="include\State\GameState.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\GameState.h">
+    <ClInclude Include="include\UI\CenteredButton.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\CenteredButton.h">
+    <ClInclude Include="include\Manager\StateManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\StateManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\ResourceManager.h">
+    <ClInclude Include="include\Manager\ResourceManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\ServiceLocator.h">
@@ -191,40 +197,52 @@
     <ClInclude Include="include\State.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\RenderManager.h">
+    <ClInclude Include="include\Manager\RenderManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\Camera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\Pickup.h">
+    <ClInclude Include="include\Pickup\Pickup.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\AmmoPickup.h">
+    <ClInclude Include="include\Pickup\AmmoPickup.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\PickupManager.h">
+    <ClInclude Include="include\Manager\PickupManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\Grunt.h">
+    <ClInclude Include="include\Enemy\Grunt.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\Mortar.h">
+    <ClInclude Include="include\Enemy\Mortar.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\HealthPickup.h">
+    <ClInclude Include="include\Pickup\HealthPickup.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\SpawnManager.h">
+    <ClInclude Include="include\Manager\SpawnManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\GameTypes.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\Shotgun.h">
+    <ClInclude Include="include\Weapon\Shotgun.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\Rifle.h">
+    <ClInclude Include="include\Weapon\Rifle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Enemy\Bull.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Collision.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Manager\CollisionManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\State\PauseState.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
