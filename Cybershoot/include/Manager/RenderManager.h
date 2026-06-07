@@ -9,7 +9,7 @@ private:
 	sf::RenderWindow window;
 	Camera camera;
 public:
-	RenderManager();
+	void Init();
 
 	sf::Vector2i GetMousePosition();
 	sf::Vector2f GetMouseWorldPosition();

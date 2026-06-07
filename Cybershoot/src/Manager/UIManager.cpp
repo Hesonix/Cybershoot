@@ -3,7 +3,7 @@
 #include "ManagerLocator.h"
 #include "Manager/ResourceManager.h"
 
-UIManager::UIManager()
+void UIManager::Init()
 {
 	gameTimeText.SetFont(ManagerLocator::GetResourceManager().GetFontByName("UI"));
 	gameTimeText.SetText("00:00");
@@ -21,7 +21,7 @@ UIManager::UIManager()
 	healthBarBackground.setOutlineThickness(5.0f);
 
 	weaponAmmoText.SetFont(ManagerLocator::GetResourceManager().GetFontByName("UI"));
-	weaponAmmoText.SetText("0");
+	weaponAmmoText.SetText("6 / 24");
 	weaponAmmoText.SetCharacterSize(80);
 	weaponAmmoText.SetPosition(sf::Vector2f(WindowSettings::WIDTH - 150.0f, WindowSettings::HEIGHT - 100.0f));
 

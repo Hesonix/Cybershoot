@@ -11,7 +11,7 @@ private:
 public:
 	Camera();
 
-	void Reset();
+	void SetPosition(sf::Vector2f position);
 
 	void Update(sf::Vector2f newPosition);
 

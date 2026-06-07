@@ -1,20 +1,18 @@
 #pragma once
 
 #include "State.h"
+#include "State/GameState.h"
 #include "UI/CenteredText.h"
 #include "UI/CenteredButton.h"
-#include "WindowSettings.h"
-#include "Manager/TileManager.h"
 
-class MainMenuState : public State
+class GameOverState : public State
 {
 private:
-	CenteredText titleText;
-	CenteredButton playButton;
-	CenteredButton settingsButton;
+	sf::RectangleShape background;
+	CenteredText gameOverText;
 	CenteredButton quitButton;
 public:
-	MainMenuState();
+	GameOverState();
 
 	void HandleInput(sf::Event& event, sf::RenderWindow& window) override;
 	void Update(float deltaTime) override;

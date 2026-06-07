@@ -27,7 +27,7 @@ private:
 public:
 	static constexpr float WEAPON_OFFSET = 50.0f;
 
-	Player();
+	void Init();
 
 	static Player& GetInstance() { return *Instance; }
 

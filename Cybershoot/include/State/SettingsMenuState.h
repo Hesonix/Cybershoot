@@ -4,17 +4,15 @@
 #include "UI/CenteredText.h"
 #include "UI/CenteredButton.h"
 #include "WindowSettings.h"
-#include "Manager/TileManager.h"
 
-class MainMenuState : public State
+class SettingsMenuState : public State
 {
 private:
-	CenteredText titleText;
-	CenteredButton playButton;
-	CenteredButton settingsButton;
-	CenteredButton quitButton;
+	CenteredText settingsText;
+	CenteredText toBeAddedText;
+	CenteredButton backButton;
 public:
-	MainMenuState();
+	SettingsMenuState();
 
 	void HandleInput(sf::Event& event, sf::RenderWindow& window) override;
 	void Update(float deltaTime) override;

@@ -15,7 +15,7 @@ private:
 	CenteredText weaponAmmoText;
 	CenteredText reloadingText;
 public:
-	UIManager();
+	void Init();
 
 	void UpdateGameTimeText(float gameTime);
 	void UpdateHealthBar(int health);

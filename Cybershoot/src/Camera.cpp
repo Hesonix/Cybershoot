@@ -8,9 +8,9 @@ Camera::Camera()
 	view.setSize(WindowSettings::WIDTH, WindowSettings::HEIGHT);
 }
 
-void Camera::Reset()
+void Camera::SetPosition(sf::Vector2f position)
 {
-	view.setCenter(0.0f, 0.0f);
+	view.setCenter(position);
 }
 
 void Camera::Update(sf::Vector2f newPosition)

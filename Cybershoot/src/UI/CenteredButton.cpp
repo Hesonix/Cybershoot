@@ -33,7 +33,6 @@ void CenteredButton::SetBackgroundColor(sf::Color color)
 
 void CenteredButton::SetOutlineColor(sf::Color color)
 {
-	background.setOutlineThickness(5.0f);
 	background.setOutlineColor(color);
 }
 

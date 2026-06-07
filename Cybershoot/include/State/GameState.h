@@ -2,7 +2,6 @@
 
 #include "State.h"
 #include "Player.h"
-#include "Manager/TileManager.h"
 #include "Manager/BulletManager.h"
 #include "Manager/EnemyManager.h"
 #include "Manager/PickupManager.h"
@@ -15,7 +14,6 @@ class GameState : public State
 {
 private:	
 	Player player;
-	TileManager tileManager;
 	BulletManager bulletManager;
 	EnemyManager enemyManager;
 	PickupManager pickupManager;

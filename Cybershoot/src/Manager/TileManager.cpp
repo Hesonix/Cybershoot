@@ -1,11 +1,14 @@
 #include "Manager/TileManager.h"
 
+#include "ManagerLocator.h"
+#include "Manager/ResourceManager.h"
+
 #include "Player.h"
 
-TileManager::TileManager()
+void TileManager::Init()
 {
-	texture.loadFromFile("res/textures/floor.png");
-
+	sf::Texture& texture = ManagerLocator::GetResourceManager().GetTextureByName("floor");
+	
 	tilePrototype.setTexture(texture);
 
 	sf::Vector2u textureSize = texture.getSize();
@@ -19,7 +22,10 @@ TileManager::TileManager()
 	tiles.resize(GRID_SIZE, std::vector<sf::Sprite>(GRID_SIZE));
 
 	currentCenterTile = { 0, 0 };
+}
 
+void TileManager::Reset()
+{
 	for (int x = 0; x < GRID_SIZE; x++)
 	{
 		for (int y = 0; y < GRID_SIZE; y++)
@@ -33,10 +39,8 @@ TileManager::TileManager()
 	}
 }
 
-void TileManager::Update(float deltaTime)
+void TileManager::Update(sf::Vector2f playerPosition)
 {
-	sf::Vector2f playerPosition = Player::GetInstance().GetPosition();
-
 	int playerTileX = static_cast<int>(playerPosition.x / tileSize.x);
 	int playerTileY = static_cast<int>(playerPosition.y / tileSize.y);
 

@@ -132,6 +132,10 @@
     <ClCompile Include="src\Pickup\AmmoPickup.cpp" />
     <ClCompile Include="src\Enemy\Bull.cpp" />
     <ClCompile Include="src\Camera.cpp" />
+    <ClCompile Include="src\State\ConfirmationDialogState.cpp" />
+    <ClCompile Include="src\State\GameOverState.cpp" />
+    <ClCompile Include="src\State\SettingsMenuState.cpp" />
+    <ClCompile Include="src\Transition.cpp" />
     <ClCompile Include="src\UI\CenteredButton.cpp" />
     <ClCompile Include="src\Collision.cpp" />
     <ClCompile Include="src\Enemy\Grunt.cpp" />
@@ -162,7 +166,7 @@
     <ClCompile Include="src\Manager\SpawnManager.cpp" />
     <ClCompile Include="src\Manager\StateManager.cpp" />
     <ClCompile Include="src\Manager\TileManager.cpp" />
-    <ClCompile Include="src\UIManager.cpp" />
+    <ClCompile Include="src\Manager\UIManager.cpp" />
     <ClCompile Include="src\Util\Vector.cpp" />
     <ClCompile Include="src\Weapon\Weapon.cpp" />
   </ItemGroup>
@@ -172,6 +176,10 @@
     <ClInclude Include="include\Bullet.h" />
     <ClInclude Include="include\Manager\BulletManager.h" />
     <ClInclude Include="include\Camera.h" />
+    <ClInclude Include="include\State\ConfirmationDialogState.h" />
+    <ClInclude Include="include\State\GameOverState.h" />
+    <ClInclude Include="include\State\SettingsMenuState.h" />
+    <ClInclude Include="include\Transition.h" />
     <ClInclude Include="include\UI\CenteredButton.h" />
     <ClInclude Include="include\UI\CenteredText.h" />
     <ClInclude Include="include\Collision.h" />
@@ -199,7 +207,7 @@
     <ClInclude Include="include\ServiceLocator.h" />
     <ClInclude Include="include\Weapon\Shotgun.h" />
     <ClInclude Include="include\Manager\SpawnManager.h" />
-    <ClInclude Include="include\State.h" />
+    <ClInclude Include="include\State\State.h" />
     <ClInclude Include="include\Manager\StateManager.h" />
     <ClInclude Include="include\Manager\TileManager.h" />
     <ClInclude Include="include\Manager\UIManager.h" />

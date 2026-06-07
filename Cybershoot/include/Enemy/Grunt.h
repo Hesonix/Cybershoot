@@ -5,8 +5,8 @@
 class Grunt : public Enemy
 {
 private:
-	const float ATTACK_RADIUS = 90.0f;
-	const float ATTACK_COOLDOWN_DURATION = 1.0f;
+	const float ATTACK_RADIUS = 50.0f;
+	const float ATTACK_COOLDOWN_DURATION = 0.5f;
 	const float MOVE_SPEED = 200.0f;
 
 	bool isAttacking = false;

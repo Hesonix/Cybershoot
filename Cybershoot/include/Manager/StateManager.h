@@ -3,13 +3,15 @@
 #include <memory>
 #include <vector>
 
-#include "State.h"
+#include "State/State.h"
 
 class StateManager
 {
 private:
 	std::vector<std::unique_ptr<State>> states;
 public:
+	void Init();
+
 	void PushState(std::unique_ptr<State> state);
 	void PopState();
 	void ChangeState(std::unique_ptr<State> state);

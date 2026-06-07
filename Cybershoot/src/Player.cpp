@@ -10,12 +10,13 @@
 
 Player* Player::Instance = nullptr;
 
-Player::Player()
+void Player::Init()
 {
 	Instance = this;
 	sprite.setOrigin(16.0f, 16.0f);
 	sprite.setScale(PLAYER_SCALE, PLAYER_SCALE);
 	sprite.setTexture(ManagerLocator::GetResourceManager().GetTextureByName("player"));
+	weapon = std::make_unique<Pistol>();
 }
 
 void Player::TakeDamage(int damage)

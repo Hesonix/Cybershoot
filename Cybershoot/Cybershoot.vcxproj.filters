@@ -51,7 +51,7 @@
     <ClCompile Include="src\Manager\CollisionManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\UIManager.cpp">
+    <ClCompile Include="src\Manager\UIManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\UI\CenteredText.cpp">
@@ -121,6 +121,18 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\State\PauseState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\State\GameOverState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\State\SettingsMenuState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Transition.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\State\ConfirmationDialogState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -194,7 +206,7 @@
     <ClInclude Include="include\ManagerLocator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\State.h">
+    <ClInclude Include="include\State\State.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\Manager\RenderManager.h">
@@ -243,6 +255,18 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\State\PauseState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\State\GameOverState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\State\SettingsMenuState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Transition.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\State\ConfirmationDialogState.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

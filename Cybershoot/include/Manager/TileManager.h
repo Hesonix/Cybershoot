@@ -11,15 +11,17 @@ private:
 	static constexpr int CENTER_OFFSET = GRID_SIZE / 2;
 
 	std::vector<std::vector<sf::Sprite>> tiles;
-	sf::Texture texture;
+
 	sf::Sprite tilePrototype;
 
 	sf::Vector2f tileSize;
 	sf::Vector2i currentCenterTile;
 public:
-	TileManager();
+	void Init();
 
-	void Update(float deltaTime);
+	void Reset();
+
+	void Update(sf::Vector2f playerPosition);
 protected:
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 };

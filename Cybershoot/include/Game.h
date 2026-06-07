@@ -5,6 +5,7 @@
 #include "Manager/RenderManager.h"
 #include "Manager/ResourceManager.h"
 #include "Manager/StateManager.h"
+#include "Manager/TileManager.h"
 
 class Game
 {
@@ -14,10 +15,9 @@ private:
 	RenderManager renderManager;
 	ResourceManager resourceManager;
 	StateManager stateManager;
+	TileManager tileManager;
 
 	void Initialize();
-
-	void LoadResources();
 
 	void HandleEvents(sf::RenderWindow& window);
 	void Update(float deltaTime);
