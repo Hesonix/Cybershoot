@@ -1,9 +1,9 @@
 #include "Manager/RenderManager.h"
 #include "WindowSettings.h"
 
-void RenderManager::Init()
+RenderManager::RenderManager()
+	: window(sf::VideoMode(WindowSettings::WIDTH, WindowSettings::HEIGHT), "Cybershoot", sf::Style::Fullscreen)
 {
-	window.create(sf::VideoMode(WindowSettings::WIDTH, WindowSettings::HEIGHT), "Cybershoot", sf::Style::Fullscreen);
 	window.setVerticalSyncEnabled(true);
 }
 

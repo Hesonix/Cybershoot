@@ -1,6 +1,7 @@
 #pragma once
 
 #include "State.h"
+#include "Tiles.h"
 #include "Player.h"
 #include "Manager/BulletManager.h"
 #include "Manager/EnemyManager.h"
@@ -12,7 +13,8 @@
 
 class GameState : public State
 {
-private:	
+private:
+	Tiles tiles;
 	Player player;
 	BulletManager bulletManager;
 	EnemyManager enemyManager;

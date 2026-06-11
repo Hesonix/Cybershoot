@@ -15,7 +15,31 @@ bool Pickup::DidCollideWithPlayer()
 	return Collision::CheckRectangleCollision(GetGlobalBounds(), Player::GetInstance().GetGlobalBounds());
 }
 
+void Pickup::Update(float deltaTime)
+{
+	lifetime += deltaTime;
+
+	if (lifetime >= BLINK_START_TIME)
+	{
+		blinkTimer += deltaTime;
+
+		if (blinkTimer >= BLINK_INTERVAL)
+		{
+			blinkTimer = 0.0f;
+			isVisible = !isVisible;
+		}
+	}
+
+	if (lifetime >= MAX_LIFETIME)
+	{
+		isAlive = false;
+	}
+}
+
 void Pickup::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
-	target.draw(sprite);
+	if (isVisible)
+	{
+		target.draw(sprite);
+	}
 }

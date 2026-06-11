@@ -12,17 +12,23 @@ void Shotgun::Fire()
 
 	sf::Vector2f playerLookDirection = Player::GetInstance().GetLookDirection();
 
-	for (int i = 0; i < BULLETS_PER_SHOT; i++)
-	{
-		float randomSpread = RandomGenerator::GetFloat(-SPREAD, SPREAD);
-		sf::Vector2f direction = Vector::Rotate(playerLookDirection, randomSpread);
+	ManagerLocator::GetBulletManager().SpawnBullet(
+		GetMuzzlePosition(),
+		playerLookDirection * BULLET_SPEED,
+		true
+	);
 
-		ManagerLocator::GetBulletManager().SpawnBullet(
-			GetMuzzlePosition(),
-			direction * BULLET_SPEED,
-			true
-		);
-	}
+	ManagerLocator::GetBulletManager().SpawnBullet(
+		GetMuzzlePosition(),
+		Vector::Rotate(playerLookDirection, -SPREAD) * BULLET_SPEED,
+		true
+	);
+
+	ManagerLocator::GetBulletManager().SpawnBullet(
+		GetMuzzlePosition(),
+		Vector::Rotate(playerLookDirection, SPREAD) * BULLET_SPEED,
+		true
+	);
 
 	ammoInMagazine--;
 }

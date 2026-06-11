@@ -10,13 +10,12 @@
 
 Player* Player::Instance = nullptr;
 
-void Player::Init()
+Player::Player()
 {
 	Instance = this;
 	sprite.setOrigin(16.0f, 16.0f);
 	sprite.setScale(PLAYER_SCALE, PLAYER_SCALE);
 	sprite.setTexture(ManagerLocator::GetResourceManager().GetTextureByName("player"));
-	weapon = std::make_unique<Pistol>();
 }
 
 void Player::TakeDamage(int damage)
@@ -42,6 +41,7 @@ void Player::SetWeapon(WeaponType type)
 		case WeaponType::Rifle: weapon = std::make_unique<Rifle>(); break;
 	}
 	ManagerLocator::GetUIManager().UpdateAmmoText(weapon->GetAmmoInMagazine(), weapon->GetTotalReserveAmmo());
+	ManagerLocator::GetUIManager().UpdateReloadingText(false);
 }
 
 void Player::Update(float deltaTime)

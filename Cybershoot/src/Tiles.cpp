@@ -1,48 +1,36 @@
-#include "Manager/TileManager.h"
+#include "Tiles.h"
 
 #include "ManagerLocator.h"
 #include "Manager/ResourceManager.h"
 
-#include "Player.h"
-
-void TileManager::Init()
+Tiles::Tiles()
 {
+	sf::Sprite tilePrototype;
 	sf::Texture& texture = ManagerLocator::GetResourceManager().GetTextureByName("floor");
-	
 	tilePrototype.setTexture(texture);
-
-	sf::Vector2u textureSize = texture.getSize();
-	tileSize = sf::Vector2f(
-		static_cast<float>(textureSize.x),
-		static_cast<float>(textureSize.y)
-	);
-
-	tilePrototype.setOrigin(tileSize.x / 2.0f, tileSize.y / 2.0f);
+	tilePrototype.setOrigin(TILE_CENTER_X, TILE_CENTER_Y);
 
 	tiles.resize(GRID_SIZE, std::vector<sf::Sprite>(GRID_SIZE));
 
-	currentCenterTile = { 0, 0 };
-}
-
-void TileManager::Reset()
-{
 	for (int x = 0; x < GRID_SIZE; x++)
 	{
 		for (int y = 0; y < GRID_SIZE; y++)
 		{
 			tiles[x][y] = tilePrototype;
 			tiles[x][y].setPosition(
-				(x - CENTER_OFFSET) * tileSize.x,
-				(y - CENTER_OFFSET) * tileSize.y
+				(x - CENTER_OFFSET) * TILE_SIZE_X,
+				(y - CENTER_OFFSET) * TILE_SIZE_Y
 			);
 		}
 	}
+
+	currentCenterTile = { 0, 0 };
 }
 
-void TileManager::Update(sf::Vector2f playerPosition)
+void Tiles::Update(sf::Vector2f playerPosition)
 {
-	int playerTileX = static_cast<int>(playerPosition.x / tileSize.x);
-	int playerTileY = static_cast<int>(playerPosition.y / tileSize.y);
+	int playerTileX = static_cast<int>(playerPosition.x / TILE_SIZE_X);
+	int playerTileY = static_cast<int>(playerPosition.y / TILE_SIZE_Y);
 
 	if (playerTileX != currentCenterTile.x || playerTileY != currentCenterTile.y)
 	{
@@ -56,15 +44,15 @@ void TileManager::Update(sf::Vector2f playerPosition)
 				int worldTileY = currentCenterTile.y + (y - CENTER_OFFSET);
 
 				tiles[x][y].setPosition(
-					worldTileX * tileSize.x,
-					worldTileY * tileSize.y
+					worldTileX * TILE_SIZE_X,
+					worldTileY * TILE_SIZE_X
 				);
 			}
 		}
 	}
 }
 
-void TileManager::draw(sf::RenderTarget& target, sf::RenderStates states) const
+void Tiles::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	for (int x = 0; x < GRID_SIZE; x++)
 	{

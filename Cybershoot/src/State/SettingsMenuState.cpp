@@ -4,12 +4,15 @@
 #include "Manager/StateManager.h"
 #include "Manager/ResourceManager.h"
 #include "Manager/RenderManager.h"
-#include "Manager/TileManager.h"
-#include "WindowSettings.h"
 #include "State/MainMenuState.h"
-#include "Transition.h"
+#include "WindowSettings.h"
 
 SettingsMenuState::SettingsMenuState()
+{
+	Initialize();
+}
+
+void SettingsMenuState::Initialize()
 {
 	settingsText.SetFont(ManagerLocator::GetResourceManager().GetFontByName("UI"));
 	settingsText.SetCharacterSize(100);
@@ -35,19 +38,25 @@ void SettingsMenuState::HandleInput(sf::Event& event, sf::RenderWindow& window)
 {
 	switch (event.type)
 	{
-	case sf::Event::MouseButtonPressed:
-	{
-		if (event.mouseButton.button == sf::Mouse::Left)
+		case sf::Event::KeyPressed:
 		{
-			if (backButton.IsHovered())
+			if (event.key.code == sf::Keyboard::Escape)
 			{
-				Transition::GetInstance().FadeInOut([]() {
-					ManagerLocator::GetStateManager().ChangeState(std::make_unique<MainMenuState>());
-				});
+				ManagerLocator::GetStateManager().ChangeState(std::make_unique<MainMenuState>());
 			}
+			break;
 		}
-		break;
-	}
+		case sf::Event::MouseButtonPressed:
+		{
+			if (event.mouseButton.button == sf::Mouse::Left)
+			{
+				if (backButton.IsHovered())
+				{
+					ManagerLocator::GetStateManager().ChangeState(std::make_unique<MainMenuState>());
+				}
+			}
+			break;
+		}
 	}
 }
 
@@ -59,8 +68,8 @@ void SettingsMenuState::Update(float deltaTime)
 void SettingsMenuState::Render(sf::RenderWindow& window)
 {
 	window.setView(ManagerLocator::GetRenderManager().GetCamera().GetView());
-	window.draw(ManagerLocator::GetTileManager());
-	window.setView(ManagerLocator::GetRenderManager().GetWindow().getDefaultView());
+	window.draw(tiles);
+	window.setView(window.getDefaultView());
 	window.draw(settingsText);
 	window.draw(toBeAddedText);
 	window.draw(backButton);

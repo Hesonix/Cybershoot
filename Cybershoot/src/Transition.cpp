@@ -1,110 +1,77 @@
 #include "Transition.h"
 
+#include "ManagerLocator.h"
+#include "Manager/RenderManager.h"
+#include "Manager/StateManager.h"
 #include "WindowSettings.h"
 
 Transition::Transition()
 {
-	overlay.setSize(sf::Vector2f(WindowSettings::WIDTH, WindowSettings::WIDTH));
+	overlay.setSize(sf::Vector2f(WindowSettings::WIDTH, WindowSettings::HEIGHT));
 	overlay.setFillColor(sf::Color::Transparent);
 }
 
-Transition& Transition::GetInstance()
+void Transition::StartFadeToState(std::unique_ptr<State> nextState)
 {
-	static Transition Instance;
-	return Instance;
-}
-
-void Transition::FadeIn(std::function<void()> onComplete)
-{
-	isActive = true;
-	callback = onComplete;
-	isActive = true;
+	type = Type::FadeToState;
+	this->nextState = std::move(nextState);
 	timer = 0.0f;
-	currentType = TransitionType::FadeIn;
-	overlay.setFillColor(sf::Color::Transparent);
+	isFadingOut = true;
+	isActive = true;
 }
 
-void Transition::FadeInOut(std::function<void()> onComplete)
+void Transition::StartFadeToQuit()
 {
-	isActive = true;
-	callback = onComplete;
-	isActive = true;
+	type = Type::FadeToQuit;
 	timer = 0.0f;
-	currentType = TransitionType::FadeInOut;
-	overlay.setFillColor(sf::Color::Transparent);
-}
-
-void Transition::UpdateFadeIn(float deltaTime)
-{
-	timer += deltaTime;
-	float fadeInProgress = std::min(1.0f, timer / DURATION);
-
-	sf::Uint8 alpha = static_cast<sf::Uint8>(255.0f * fadeInProgress);
-
-	overlay.setFillColor(sf::Color(0, 0, 0, alpha));
-
-	if (fadeInProgress >= 1.0f)
-	{
-		isActive = false;
-		if (callback)
-		{
-			callback();
-		}
-	}
-}
-
-void Transition::UpdateFadeInOut(float deltaTime)
-{
-	timer += deltaTime;
-	float fadeInProgress = std::min(1.0f, timer / DURATION);
-
-	if (timer < DURATION)
-	{
-		sf::Uint8 alpha = static_cast<sf::Uint8>(255.0f * fadeInProgress);
-		overlay.setFillColor(sf::Color(0, 0, 0, alpha));
-	}
-	else if (timer < DURATION * 2)
-	{
-		if (callback)
-		{
-			callback();
-			callback = nullptr;
-		}
-
-		float fadeOutProgress = (timer - DURATION) / DURATION;
-		fadeOutProgress = std::min(1.0f, fadeOutProgress);
-		sf::Uint8 alpha = static_cast<sf::Uint8>(255.0f * (1.0f - fadeOutProgress));
-		overlay.setFillColor(sf::Color(0, 0, 0, alpha));
-	}
-	else
-	{
-		isActive = false;
-	}
+	isFadingOut = true;
+	isActive = true;
 }
 
 void Transition::Update(float deltaTime)
 {
-	if (!isActive) return;
+	timer += deltaTime;
 
-	switch (currentType)
+	if (isFadingOut)
 	{
-		case TransitionType::FadeIn:
+		float progress = std::min(1.0f, timer / FADE_OUT_DURATION);
+
+		sf::Uint8 alpha = static_cast<sf::Uint8>(255.0f * progress);
+
+		overlay.setFillColor(sf::Color(0, 0, 0, alpha));
+
+		if (progress >= 1.0f)
 		{
-			UpdateFadeIn(deltaTime);
-			break;
+			isFadingOut = false;
+			timer = 0.0f;
+
+			if (type == Type::FadeToQuit)
+			{
+				ManagerLocator::GetRenderManager().GetWindow().close();
+			}
+			else if (type == Type::FadeToState)
+			{
+				ManagerLocator::GetStateManager().ChangeState(std::move(nextState));
+				ManagerLocator::GetRenderManager().GetCamera().SetPosition(sf::Vector2f(0.0f, 0.0f));
+			}
 		}
-		case TransitionType::FadeInOut:
+	}
+	else
+	{
+		float progress = std::min(1.0f, timer / FADE_IN_DURATION);
+
+		sf::Uint8 alpha = static_cast<sf::Uint8>(255.0f * (1.0f - progress));
+
+		overlay.setFillColor(sf::Color(0, 0, 0, alpha));
+
+		if (progress >= 1.0f)
 		{
-			UpdateFadeInOut(deltaTime);
-			break;
-		}	
+			isActive = false;
+		}
 	}
 }
 
 void Transition::Render(sf::RenderWindow& window)
 {
-	if (isActive)
-	{
-		window.draw(overlay);
-	}
+	window.draw(overlay);
 }

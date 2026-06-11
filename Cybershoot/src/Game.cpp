@@ -1,26 +1,21 @@
 #include "Game.h"
 
-#include <iostream>
 #include "ManagerLocator.h"
 #include "State/MainMenuState.h"
-#include "Transition.h"
 
 Game::Game()
 {
 	Initialize();
+
+	stateManager.PushState(std::make_unique<MainMenuState>());
 }
 
 void Game::Initialize()
 {
 	ManagerLocator::SetRenderManager(&renderManager);
 	ManagerLocator::SetResourceManager(&resourceManager);
-	ManagerLocator::SetTileManager(&tileManager);
 	ManagerLocator::SetStateManager(&stateManager);
-	
-	renderManager.Init();
-	resourceManager.Init();
-	tileManager.Init();
-	stateManager.Init();	
+	ManagerLocator::SetScoreManager(&scoreManager);
 }
 
 void Game::HandleEvents(sf::RenderWindow& window)
@@ -39,7 +34,6 @@ void Game::HandleEvents(sf::RenderWindow& window)
 
 void Game::Update(float deltaTime)
 {
-	Transition::GetInstance().Update(deltaTime);
 	stateManager.Update(deltaTime);
 }
 
@@ -47,7 +41,6 @@ void Game::Render(sf::RenderWindow& window)
 {
 	window.clear();
 	stateManager.Render(window);
-	Transition::GetInstance().Render(window);
 	window.display();
 }
 

@@ -8,21 +8,24 @@
 class SpawnManager
 {
 private:
-	struct Unlock
+	static constexpr float SPAWN_EDGE_OFFSET = 100.0f;
+
+	struct EnemyUnlock
 	{
 		float time;
 		EnemyType type;
 	};
 
-	std::vector<Unlock> unlocks = {
+	std::vector<EnemyUnlock> enemyUnlocks = {
 		{0.0f, EnemyType::Grunt},
-		{60.0f, EnemyType::Mortar},
-		{120.0f, EnemyType::Bull}
+		{150.0f, EnemyType::Mortar},
+		{300.0f, EnemyType::Bull}
 	};
 
-	float spawnTimer = 0.0f;
+	float enemySpawnTimer = 0.0f;
+	float pickupSpawnTimer = 0.0f;
 
-	std::vector<EnemyType> GetAvailableTypes(float gameTime);
+	std::vector<EnemyType> GetAvailableEnemyTypes(float gameTime);
 	sf::Vector2f GetRandomEdgePosition();
 public:
 	void Update(float deltaTime);

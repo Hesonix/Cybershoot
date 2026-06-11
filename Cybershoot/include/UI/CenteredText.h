@@ -14,6 +14,7 @@ public:
 	void SetFont(const sf::Font& font);
 	void SetText(const std::string& newText);
 	void SetCharacterSize(unsigned int size);
+	void SetFillColor(sf::Color color);
 	void SetPosition(sf::Vector2f position);
 	void Show();
 	void Hide();

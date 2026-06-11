@@ -1,8 +1,10 @@
 #include "Weapon/Weapon.h"
 
+#include "Player.h"
 #include "ManagerLocator.h"
 #include "Manager/UIManager.h"
-#include "Player.h"
+#include "Manager/BulletManager.h"
+#include "RandomGenerator.h"
 
 sf::Vector2f Weapon::GetMuzzlePosition()
 {
@@ -49,6 +51,23 @@ void Weapon::AddAmmo(int amount)
 {
 	totalReserveAmmo += amount;
 	ManagerLocator::GetUIManager().UpdateAmmoText(ammoInMagazine, totalReserveAmmo);
+}
+
+void Weapon::Fire()
+{
+	if (isReloading || ammoInMagazine <= 0) return;
+
+	sf::Vector2f playerLookDirection = Player::GetInstance().GetLookDirection();
+
+	float randomSpread = RandomGenerator::GetFloat(-SPREAD, SPREAD);
+
+	ManagerLocator::GetBulletManager().SpawnBullet(
+		GetMuzzlePosition(),
+		Vector::Rotate(playerLookDirection, randomSpread) * BULLET_SPEED,
+		true
+	);
+
+	ammoInMagazine--;
 }
 
 void Weapon::Update(float deltaTime)

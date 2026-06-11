@@ -5,21 +5,6 @@
 #include "Manager/BulletManager.h"
 #include "Player.h"
 
-void Rifle::Fire()
-{
-	if (isReloading || ammoInMagazine <= 0) return;
-
-	sf::Vector2f playerLookDirection = Player::GetInstance().GetLookDirection();
-
-	ManagerLocator::GetBulletManager().SpawnBullet(
-		GetMuzzlePosition(),
-		playerLookDirection * BULLET_SPEED,
-		true
-	);
-
-	ammoInMagazine--;
-}
-
 Rifle::Rifle()
 	: Weapon(0.1f, 2000.0f, 30, 90, 1, 0.05f, sf::Vector2f(0.0f, 0.0f))
 {

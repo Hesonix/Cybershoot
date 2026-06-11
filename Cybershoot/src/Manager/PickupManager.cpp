@@ -32,4 +32,9 @@ void PickupManager::Cleanup()
 void PickupManager::Update(float deltaTime)
 {
 	Cleanup();
+
+	for (auto& pickup : pickups)
+	{
+		pickup->Update(deltaTime);
+	}
 }

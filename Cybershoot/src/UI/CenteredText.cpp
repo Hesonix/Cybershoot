@@ -25,6 +25,11 @@ void CenteredText::SetCharacterSize(unsigned int size)
 	UpdateAlignment();
 }
 
+void CenteredText::SetFillColor(sf::Color color)
+{
+	text.setFillColor(color);
+}
+
 void CenteredText::SetPosition(sf::Vector2f position)
 {
 	text.setPosition(position);

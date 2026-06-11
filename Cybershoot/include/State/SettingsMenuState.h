@@ -1,6 +1,7 @@
 #pragma once
 
 #include "State.h"
+#include "Tiles.h"
 #include "UI/CenteredText.h"
 #include "UI/CenteredButton.h"
 #include "WindowSettings.h"
@@ -11,6 +12,10 @@ private:
 	CenteredText settingsText;
 	CenteredText toBeAddedText;
 	CenteredButton backButton;
+
+	Tiles tiles;
+
+	void Initialize();
 public:
 	SettingsMenuState();
 

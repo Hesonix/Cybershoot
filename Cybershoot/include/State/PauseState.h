@@ -12,6 +12,8 @@ private:
 	CenteredText pausedText;
 	CenteredButton resumeButton;
 	CenteredButton quitButton;
+
+	void Initialize();
 public:
 	PauseState();
 

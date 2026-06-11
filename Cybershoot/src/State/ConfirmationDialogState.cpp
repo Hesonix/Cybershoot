@@ -2,11 +2,18 @@
 
 #include "ManagerLocator.h"
 #include "Manager/ResourceManager.h"
+#include "Manager/StateManager.h"
 #include "WindowSettings.h"
 
 ConfirmationDialogState::ConfirmationDialogState(const std::string& message, std::function<void()> onConfirm, std::function<void()> onCancel)
-	: onConfirm(onConfirm)
+	: message(message)
+	, onConfirm(onConfirm)
 	, onCancel(onCancel)
+{
+	Initialize();
+}
+
+void ConfirmationDialogState::Initialize()
 {
 	background.setSize(sf::Vector2f(800.0f, 500.0f));
 	background.setOrigin(400.0f, 250.0f);
@@ -17,7 +24,7 @@ ConfirmationDialogState::ConfirmationDialogState(const std::string& message, std
 	messageText.SetFont(ManagerLocator::GetResourceManager().GetFontByName("UI"));
 	messageText.SetCharacterSize(50);
 	messageText.SetPosition(sf::Vector2f(WindowSettings::CENTER_X, WindowSettings::CENTER_Y - 100.0f));
-	
+
 	yesButton.SetFont(ManagerLocator::GetResourceManager().GetFontByName("UI"));
 	yesButton.SetCharacterSize(50);
 	yesButton.SetText("YES");
@@ -39,6 +46,14 @@ void ConfirmationDialogState::HandleInput(sf::Event& event, sf::RenderWindow& wi
 {
 	switch (event.type)
 	{
+		case sf::Event::KeyPressed:
+		{
+			if (event.key.code == sf::Keyboard::Escape)
+			{
+				ManagerLocator::GetStateManager().PopState();
+			}
+			break;
+		}
 		case sf::Event::MouseButtonPressed:
 		{
 			if (event.mouseButton.button == sf::Mouse::Left)

@@ -1,6 +1,6 @@
 #include "Manager/ResourceManager.h"
 
-void ResourceManager::Init()
+ResourceManager::ResourceManager()
 {
 	LoadFont("UI", "res/fonts/Tiny5-Regular.ttf");
 	LoadTexture("floor", "res/textures/floor.png");
@@ -21,7 +21,6 @@ void ResourceManager::LoadTexture(const std::string& name, const std::string& fi
 	{
 		textures.emplace(name, std::move(texture));
 	}
-	
 }
 
 void ResourceManager::LoadFont(const std::string& name, const std::string& file)

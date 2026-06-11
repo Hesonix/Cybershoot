@@ -3,7 +3,7 @@
 class RenderManager;
 class ResourceManager;
 class StateManager;
-class TileManager;
+class ScoreManager;
 class EnemyManager;
 class BulletManager;
 class PickupManager;
@@ -16,7 +16,7 @@ private:
 	static RenderManager* renderManager;
 	static ResourceManager* resourceManager;
 	static StateManager* stateManager;
-	static TileManager* tileManager;
+	static ScoreManager* scoreManager;
 	static EnemyManager* enemyManager;
 	static BulletManager* bulletManager;
 	static PickupManager* pickupManager;
@@ -26,7 +26,7 @@ public:
 	static void SetRenderManager(RenderManager* manager) { renderManager = manager; }
 	static void SetResourceManager(ResourceManager* manager) { resourceManager = manager; }
 	static void SetStateManager(StateManager* manager) { stateManager = manager; }
-	static void SetTileManager(TileManager* manager) { tileManager = manager; }
+	static void SetScoreManager(ScoreManager* manager) { scoreManager = manager; }
 	static void SetEnemyManager(EnemyManager* manager) { enemyManager = manager; }
 	static void SetBulletManager(BulletManager* manager) { bulletManager = manager; }
 	static void SetPickupManager(PickupManager* manager) { pickupManager = manager; }
@@ -36,7 +36,7 @@ public:
 	static RenderManager& GetRenderManager() { return *renderManager; }
 	static ResourceManager& GetResourceManager() { return *resourceManager; }
 	static StateManager& GetStateManager() { return *stateManager; }
-	static TileManager& GetTileManager() { return *tileManager; }
+	static ScoreManager& GetScoreManager() { return *scoreManager; }
 	static EnemyManager& GetEnemyManager() { return *enemyManager; }
 	static BulletManager& GetBulletManager() { return *bulletManager; }
 	static PickupManager& GetPickupManager() { return *pickupManager; }

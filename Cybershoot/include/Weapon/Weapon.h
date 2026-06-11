@@ -30,7 +30,7 @@ protected:
 public:
 	Weapon(float fireRate, float bulletSpeed, int magazineCapacity, int startingReserveAmmo, int bulletsPerShot, float spread, sf::Vector2f muzzleOffset);
 
-	virtual void Fire() = 0;
+	virtual void Fire();
 
 	void StartFiring() { isFiring = true; }
 	void StopFiring() { isFiring = false; }

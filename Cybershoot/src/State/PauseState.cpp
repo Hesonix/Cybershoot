@@ -3,12 +3,16 @@
 #include "ManagerLocator.h"
 #include "Manager/StateManager.h"
 #include "Manager/ResourceManager.h"
-#include "WindowSettings.h"
 #include "State/MainMenuState.h"
 #include "State/ConfirmationDialogState.h"
-#include "Transition.h"
+#include "WindowSettings.h"
 
 PauseState::PauseState()
+{
+	Initialize();
+}
+
+void PauseState::Initialize()
 {
 	background.setSize(sf::Vector2f(WindowSettings::WIDTH, WindowSettings::HEIGHT));
 	background.setFillColor(sf::Color(0, 0, 0, 150));
@@ -28,7 +32,7 @@ PauseState::PauseState()
 
 	quitButton.SetFont(ManagerLocator::GetResourceManager().GetFontByName("UI"));
 	quitButton.SetCharacterSize(50);
-	quitButton.SetText("QUIT");
+	quitButton.SetText("EXIT");
 	quitButton.SetSize(sf::Vector2f(400.0f, 150.0f));
 	quitButton.SetBackgroundColor(sf::Color(55, 55, 55));
 	quitButton.SetOutlineColor(sf::Color::White);
@@ -59,15 +63,7 @@ void PauseState::HandleInput(sf::Event& event, sf::RenderWindow& window)
 				{
 					ManagerLocator::GetStateManager().PushState(std::make_unique<ConfirmationDialogState>(
 						"Exit to main menu?",
-						[]()
-						{
-							  Transition::GetInstance().FadeInOut([]()
-								  { 
-									ManagerLocator::GetStateManager().PopState();
-									ManagerLocator::GetStateManager().ChangeState(std::make_unique<MainMenuState>()); 
-								  }
-							  ); 
-						},
+						[]() { ManagerLocator::GetStateManager().TransitionTo(std::make_unique<MainMenuState>()); },
 						[]() { ManagerLocator::GetStateManager().PopState(); }
 					));
 					

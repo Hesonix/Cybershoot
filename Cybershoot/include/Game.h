@@ -1,11 +1,10 @@
 #pragma once
 
 #include "SFML/Graphics.hpp"
-
 #include "Manager/RenderManager.h"
 #include "Manager/ResourceManager.h"
 #include "Manager/StateManager.h"
-#include "Manager/TileManager.h"
+#include "Manager/ScoreManager.h"
 
 class Game
 {
@@ -15,7 +14,7 @@ private:
 	RenderManager renderManager;
 	ResourceManager resourceManager;
 	StateManager stateManager;
-	TileManager tileManager;
+	ScoreManager scoreManager;
 
 	void Initialize();
 

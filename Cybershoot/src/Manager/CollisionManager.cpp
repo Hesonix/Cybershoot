@@ -5,6 +5,7 @@
 #include "Manager/BulletManager.h"
 #include "Manager/EnemyManager.h"
 #include "Manager/PickupManager.h"
+#include "Manager/GameManager.h"
 
 void CollisionManager::Update(float deltaTime)
 {
@@ -20,6 +21,7 @@ void CollisionManager::Update(float deltaTime)
 			{
 				bullet->Destroy();
 				enemy->Destroy();
+				ManagerLocator::GetGameManager().OnEnemyKilled();
 				break;
 			}
 		}

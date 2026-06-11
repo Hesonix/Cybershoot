@@ -1,10 +1,9 @@
 #pragma once
 
 #include "State.h"
+#include "Tiles.h"
 #include "UI/CenteredText.h"
 #include "UI/CenteredButton.h"
-#include "WindowSettings.h"
-#include "Manager/TileManager.h"
 
 class MainMenuState : public State
 {
@@ -13,6 +12,10 @@ private:
 	CenteredButton playButton;
 	CenteredButton settingsButton;
 	CenteredButton quitButton;
+
+	Tiles tiles;
+
+	void Initialize();
 public:
 	MainMenuState();
 

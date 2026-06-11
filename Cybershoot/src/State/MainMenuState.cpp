@@ -1,20 +1,21 @@
 #include "State/MainMenuState.h"
 
 #include "ManagerLocator.h"
+#include "Manager/RenderManager.h"
 #include "Manager/ResourceManager.h"
 #include "Manager/StateManager.h"
-#include "Manager/RenderManager.h"
-#include "State/GameState.h"
+#include "State/StartMenuState.h"
 #include "State/SettingsMenuState.h"
-#include "WindowSettings.h"
-#include "Transition.h"
 #include "State/ConfirmationDialogState.h"
+#include "WindowSettings.h"
 
 MainMenuState::MainMenuState()
 {
-	ManagerLocator::GetRenderManager().GetCamera().SetPosition(sf::Vector2f(0.0f, 0.0f));
-	ManagerLocator::GetTileManager().Reset();
+	Initialize();
+}
 
+void MainMenuState::Initialize()
+{
 	titleText.SetFont(ManagerLocator::GetResourceManager().GetFontByName("UI"));
 	titleText.SetCharacterSize(100);
 	titleText.SetText("CYBERSHOOT");
@@ -26,7 +27,7 @@ MainMenuState::MainMenuState()
 	playButton.SetSize(sf::Vector2f(400.0f, 150.0f));
 	playButton.SetBackgroundColor(sf::Color(55, 55, 55));
 	playButton.SetPosition(sf::Vector2f(WindowSettings::CENTER_X, WindowSettings::CENTER_Y - 200.0f));
-	
+
 	settingsButton.SetFont(ManagerLocator::GetResourceManager().GetFontByName("UI"));
 	settingsButton.SetCharacterSize(50);
 	settingsButton.SetText("SETTINGS");
@@ -50,7 +51,11 @@ void MainMenuState::HandleInput(sf::Event& event, sf::RenderWindow& window)
 		{
 			if (event.key.code == sf::Keyboard::Escape)
 			{
-				window.close();
+				ManagerLocator::GetStateManager().PushState(std::make_unique<ConfirmationDialogState>(
+					"Quit the game?",
+					[&]() { ManagerLocator::GetStateManager().Quit(); },
+					[]() { ManagerLocator::GetStateManager().PopState(); }
+				));
 			}
 			break;
 		}
@@ -60,21 +65,17 @@ void MainMenuState::HandleInput(sf::Event& event, sf::RenderWindow& window)
 			{
 				if (playButton.IsHovered())
 				{
-					Transition::GetInstance().FadeInOut([]() {
-						ManagerLocator::GetStateManager().ChangeState(std::make_unique<GameState>());
-					});
+					ManagerLocator::GetStateManager().ChangeState(std::make_unique<StartMenuState>());
 				}
 				else if (settingsButton.IsHovered())
 				{
-					Transition::GetInstance().FadeInOut([]() {
-						ManagerLocator::GetStateManager().ChangeState(std::make_unique<SettingsMenuState>());
-					});
+					ManagerLocator::GetStateManager().ChangeState(std::make_unique<SettingsMenuState>());
 				}
 				else if (quitButton.IsHovered())
 				{
 					ManagerLocator::GetStateManager().PushState(std::make_unique<ConfirmationDialogState>(
-						"Leave the game?",
-						[&]() { Transition::GetInstance().FadeIn([&]() { window.close(); }); },
+						"Quit the game?",
+						[&]() { ManagerLocator::GetStateManager().Quit(); },
 						[]() { ManagerLocator::GetStateManager().PopState(); }
 					));
 				}
@@ -94,8 +95,8 @@ void MainMenuState::Update(float deltaTime)
 void MainMenuState::Render(sf::RenderWindow& window)
 {
 	window.setView(ManagerLocator::GetRenderManager().GetCamera().GetView());
-	window.draw(ManagerLocator::GetTileManager());
-	window.setView(ManagerLocator::GetRenderManager().GetWindow().getDefaultView());
+	window.draw(tiles);
+	window.setView(window.getDefaultView());
 	window.draw(titleText);
 	window.draw(playButton);
 	window.draw(settingsButton);

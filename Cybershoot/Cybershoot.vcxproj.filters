@@ -60,9 +60,6 @@
     <ClCompile Include="src\Manager\GameManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Manager\TileManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\State\MainMenuState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -129,10 +126,19 @@
     <ClCompile Include="src\State\SettingsMenuState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\State\ConfirmationDialogState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Tiles.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="src\Transition.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\State\ConfirmationDialogState.cpp">
+    <ClCompile Include="src\State\StartMenuState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Manager\ScoreManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -180,9 +186,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\Util\Lerp.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\Manager\TileManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\State\MainMenuState.h">
@@ -263,10 +266,19 @@
     <ClInclude Include="include\State\SettingsMenuState.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\State\ConfirmationDialogState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Tiles.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="include\Transition.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\State\ConfirmationDialogState.h">
+    <ClInclude Include="include\State\StartMenuState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Manager\ScoreManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

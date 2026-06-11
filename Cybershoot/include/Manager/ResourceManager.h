@@ -9,7 +9,7 @@ private:
 	std::unordered_map<std::string, sf::Texture> textures;
 	std::unordered_map<std::string, sf::Font> fonts;
 public:
-	void Init();
+	ResourceManager();
 
 	void LoadTexture(const std::string& name, const std::string& file);
 	void LoadFont(const std::string& name, const std::string& file);

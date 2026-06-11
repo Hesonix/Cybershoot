@@ -3,12 +3,18 @@
 #include "ManagerLocator.h"
 #include "Manager/ResourceManager.h"
 
-void UIManager::Init()
+UIManager::UIManager()
 {
 	gameTimeText.SetFont(ManagerLocator::GetResourceManager().GetFontByName("UI"));
 	gameTimeText.SetText("00:00");
 	gameTimeText.SetCharacterSize(100);
 	gameTimeText.SetPosition(sf::Vector2f(WindowSettings::CENTER_X, 50.0f));
+
+	scoreText.SetFont(ManagerLocator::GetResourceManager().GetFontByName("UI"));
+	scoreText.SetText("0");
+	scoreText.SetCharacterSize(80);
+	scoreText.SetFillColor(sf::Color::Yellow);
+	scoreText.SetPosition(sf::Vector2f(WindowSettings::CENTER_X, 125.0f));
 
 	healthBar.setPosition(25.0f, 25.0f);
 	healthBar.setSize(sf::Vector2f(600.0f, 50.0f));
@@ -35,6 +41,7 @@ void UIManager::Init()
 void UIManager::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	target.draw(gameTimeText);
+	target.draw(scoreText);
 	target.draw(healthBarBackground);
 	target.draw(healthBar);
 	target.draw(weaponAmmoText);
@@ -53,6 +60,11 @@ void UIManager::UpdateGameTimeText(float time)
 	finalString += std::to_string(seconds);
 
 	gameTimeText.SetText(finalString);
+}
+
+void UIManager::UpdateScoreText(int score)
+{
+	scoreText.SetText(std::to_string(score));
 }
 
 void UIManager::UpdateHealthBar(int health)

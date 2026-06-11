@@ -1,16 +1,16 @@
 #include "State/GameState.h"
 
+#include "ManagerLocator.h"
+#include "Manager/RenderManager.h"
 #include "Manager/StateManager.h"
 #include "State/MainMenuState.h"
 #include "State/PauseState.h"
-#include "ManagerLocator.h"
-#include "Manager/RenderManager.h"
-#include "Camera.h"
-#include "GameTypes.h"
 
 GameState::GameState()
 {
 	Initialize();
+
+	player.SetWeapon(WeaponType::Pistol);
 }
 
 void GameState::Initialize()
@@ -20,9 +20,6 @@ void GameState::Initialize()
 	ManagerLocator::SetGameManager(&gameManager);
 	ManagerLocator::SetUIManager(&uiManager);
 	ManagerLocator::SetPickupManager(&pickupManager);
-
-	player.Init();
-	uiManager.Init();
 }
 
 void GameState::HandleInput(sf::Event& event, sf::RenderWindow& window)
@@ -63,7 +60,7 @@ void GameState::HandleInput(sf::Event& event, sf::RenderWindow& window)
 void GameState::Update(float deltaTime)
 {
 	player.Update(deltaTime);
-	ManagerLocator::GetTileManager().Update(player.GetPosition());
+	tiles.Update(player.GetPosition());
 	player.GetWeapon().Update(deltaTime);
 	bulletManager.Update(deltaTime);
 	enemyManager.Update(deltaTime);
@@ -77,7 +74,7 @@ void GameState::Update(float deltaTime)
 void GameState::Render(sf::RenderWindow& window)
 {
 	window.setView(ManagerLocator::GetRenderManager().GetCamera().GetView());
-	window.draw(ManagerLocator::GetTileManager());
+	window.draw(tiles);
 	window.draw(pickupManager);
 	window.draw(player);
 	window.draw(bulletManager);

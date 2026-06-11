@@ -1,39 +1,32 @@
 #pragma once
 
-#include "SFML/Graphics.hpp"
-#include <functional>
-
-enum class TransitionType
-{
-	None,
-	FadeIn,
-	FadeInOut
-};
+#include "State/State.h"
 
 class Transition
 {
-private:
-	static constexpr float DURATION = 0.5f;
-
-	bool isActive = false;
-	TransitionType currentType = TransitionType::None;
-	std::function<void()> callback;
-	float timer = 0.0f;
-
-	sf::RectangleShape overlay;
 public:
+	enum class Type { None, FadeToState, FadeToQuit };
+
 	Transition();
 
-	static Transition& GetInstance();
+	void StartFadeToState(std::unique_ptr<State> nextState);
+	void StartFadeToQuit();
 
 	bool IsActive() { return isActive; }
-	
-	void FadeIn(std::function<void()> onComplete = nullptr);
-	void FadeInOut(std::function<void()> onComplete = nullptr);
-
-	void UpdateFadeIn(float deltaTime);
-	void UpdateFadeInOut(float deltaTime);
 
 	void Update(float deltaTime);
 	void Render(sf::RenderWindow& window);
+private:
+	static constexpr float FADE_OUT_DURATION = 0.5f;
+	static constexpr float FADE_IN_DURATION = 0.5f;
+
+	Type type = Type::None;
+	bool isActive = false;
+	bool isFadingOut = true;
+	bool stateChanged = false;
+	float timer = 0.0f;
+
+	std::unique_ptr<State> nextState;
+
+	sf::RectangleShape overlay;
 };

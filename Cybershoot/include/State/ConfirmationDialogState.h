@@ -12,8 +12,11 @@ private:
 	CenteredText messageText;
 	CenteredButton yesButton;
 	CenteredButton noButton;
+	std::string message;
 	std::function<void()> onConfirm;
 	std::function<void()> onCancel;
+
+	void Initialize();
 public:
 	ConfirmationDialogState(const std::string& message, std::function<void()> onConfirm, std::function<void()> onCancel);
 
